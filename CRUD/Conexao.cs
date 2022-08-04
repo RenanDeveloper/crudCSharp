@@ -1,6 +1,8 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,17 +13,17 @@ namespace CRUD
 {
     public class Conexao
     {
-        private NpgsqlConnection con;
+        private IDbConnection con;
         private NpgsqlCommand comando;
         private NpgsqlDataReader leitorDados;
-        public Conexao()
+        public Conexao(IDbConnection conn)
         {
-            con = new NpgsqlConnection(@"Server=localhost;Port=5433;User Id=postgres;Password=senha1234;Database=crud");
+            con = conn;
             comando = new NpgsqlCommand();
-            comando.Connection = con;
+            comando.Connection = con as NpgsqlConnection;
         }
 
-        public NpgsqlConnection conectar()
+        public IDbConnection conectar()
         {
             if(con.State == System.Data.ConnectionState.Closed)
             {
@@ -31,9 +33,8 @@ namespace CRUD
                     Console.WriteLine("Conexao com banco ocorreu com sucesso!");
                 }
                 catch (Exception e)
-                { 
-                    Console.WriteLine("Não foi possível efetuar a conexão com o banco de dados, erro: "+e);
-                    return null;
+                {
+                    throw e;
                 }
             }
             return con;
@@ -91,9 +92,8 @@ namespace CRUD
             }
         }
 
-        public List<IProduto> dadosDoBanco()
+        public List<IProduto> BuscaDadosDoBanco()
         {
-            
 
             List<IProduto> minhaLista = new List<IProduto>();
             try
@@ -133,6 +133,10 @@ namespace CRUD
             {
                 Console.WriteLine("Não foi possível ler do banco e adicionar a lista, erro: " + e);
                 return null;
+            }
+            finally
+            {
+                con.Close();
             }
         }
 

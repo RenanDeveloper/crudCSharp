@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Casa Real\\source\\repos\\CRUD\\TestProject\\TestProject.csproj": {}
+    "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\TestProject\\TestProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Casa Real\\source\\repos\\CRUD\\CRUD\\CRUD.csproj": {
+    "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\CRUD\\CRUD.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Casa Real\\source\\repos\\CRUD\\CRUD\\CRUD.csproj",
+        "projectUniqueName": "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\CRUD\\CRUD.csproj",
         "projectName": "CRUD",
-        "projectPath": "C:\\Users\\Casa Real\\source\\repos\\CRUD\\CRUD\\CRUD.csproj",
+        "projectPath": "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\CRUD\\CRUD.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}
@@ -19,17 +19,17 @@
         "net472": {}
       }
     },
-    "C:\\Users\\Casa Real\\source\\repos\\CRUD\\TestProject\\TestProject.csproj": {
+    "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\TestProject\\TestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Casa Real\\source\\repos\\CRUD\\TestProject\\TestProject.csproj",
+        "projectUniqueName": "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\TestProject\\TestProject.csproj",
         "projectName": "TestProject",
-        "projectPath": "C:\\Users\\Casa Real\\source\\repos\\CRUD\\TestProject\\TestProject.csproj",
-        "packagesPath": "C:\\Users\\Casa Real\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Casa Real\\source\\repos\\CRUD\\TestProject\\obj\\",
+        "projectPath": "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\TestProject\\TestProject.csproj",
+        "packagesPath": "C:\\Users\\ferna\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\TestProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Casa Real\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ferna\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,8 +43,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Casa Real\\source\\repos\\CRUD\\CRUD\\CRUD.csproj": {
-                "projectPath": "C:\\Users\\Casa Real\\source\\repos\\CRUD\\CRUD\\CRUD.csproj"
+              "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\CRUD\\CRUD.csproj": {
+                "projectPath": "C:\\Users\\ferna\\Documents\\treinamento\\crudCSharp\\CRUD\\CRUD.csproj"
               }
             }
           }
@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[17.1.0, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.2, )"
+            },
             "NUnit": {
               "target": "Package",
               "version": "[3.13.3, )"
@@ -74,6 +78,10 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[4.2.1, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[6.0.5, )"
             },
             "coverlet.collector": {
               "target": "Package",

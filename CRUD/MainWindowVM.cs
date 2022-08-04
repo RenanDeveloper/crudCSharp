@@ -22,37 +22,15 @@ namespace CRUD
         public ICommand Alterar { get; private set; }
         public ICommand EditarProduto { get; set; }
         public IProduto produtoSelecionado { get; set; }
-
+        private Conexao con;
         public MainWindowVM()
         {
-            Conexao con = new Conexao();
-            List<IProduto> minhaLista = con.dadosDoBanco();
+            con = new Conexao(new NpgsqlConnection(@"Server=localhost;Port=5433;User Id=postgres;Password=senha1234;Database=crud"));
+            List<IProduto> minhaLista = con.BuscaDadosDoBanco();
             
             if(minhaLista != null) {
                 listaProdutos = new List<IProduto>(minhaLista);
             }
-
-            //listaProdutos = new ObservableCollection<IProduto>()
-            //{
-            //    new Fisico()
-            //    {
-            //        Nome = "Mouse USB",
-            //        Categoria = "Informática",
-            //        Preco = "25",
-            //        CodBarras = "76237623",
-            //        Tipo = "Físico"
-            //    },
-
-            //    new Digital()
-            //    {
-            //        Nome = "Curso Online",
-            //        Categoria = "Educação",
-            //        Preco = "179",
-            //        Login = "nome@email.com",
-            //        Password = "senhacurso123",
-            //        Tipo = "Digital"
-            //    }
-            //};
 
             IniciarComandos();
         }
@@ -86,17 +64,16 @@ namespace CRUD
                 tela.ShowDialog();
                 if (tela.DialogResult == true)
                 {
-                    Conexao con = new Conexao();
                     con.insertProduto(elemento);
 
                     listaProdutos.Add(elemento);
-
+                    Notifica("listaLinkada");
                 }
             },(object _) => ProdutoEnumeravel.ToString() != "Todos");
 
             Remove = new RelayCommand((object _) =>
             {
-                Conexao con = new Conexao();
+
                 if (produtoSelecionado != null) { 
                     con.deletarProduto(produtoSelecionado);
                     listaProdutos.Remove(produtoSelecionado);   
@@ -108,8 +85,6 @@ namespace CRUD
             {
                 if (produtoSelecionado != null)
                 {
-                    Conexao con = new Conexao();
-
                     if (produtoSelecionado.Tipo == "Físico")
                     {
                         Fisico produtoFisico = produtoSelecionado as Fisico;
@@ -152,7 +127,6 @@ namespace CRUD
                                 produtoDigital.Password = nova.Password;
 
                                 con.alterarProduto(produtoDigital, chave);
-
                             }
                         }
                     }

@@ -109,6 +109,8 @@
     <Compile Include="Conexao.cs" />
     <Compile Include="Digital.cs" />
     <Compile Include="Fisico.cs" />
+    <Compile Include="GerenciadorDB.cs" />
+    <Compile Include="IConexao.cs" />
     <Compile Include="IProduto.cs" />
     <Compile Include="MainWindowVM.cs" />
     <Compile Include="NovaEntidade.cs" />
