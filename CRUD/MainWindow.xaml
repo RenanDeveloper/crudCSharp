@@ -1,0 +1,43 @@
+﻿<Window x:Class="CRUD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRUD"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataEnum" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:Enumeravel"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="189*"/>
+            <ColumnDefinition Width="611*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Name="minhaListView" d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding Path=listaLinkada, Mode=OneWay}" SelectedItem="{Binding Path=produtoSelecionado}" Margin="91,0,0,0" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Nome}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Categoria}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=CodBarras}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Login}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Password}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Preco}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Tipo}"/>
+
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ComboBox Name="ComboAdicionarProdutos" ItemsSource="{Binding Source={StaticResource dataEnum}}" SelectedItem="{Binding ProdutoEnumeravel}" Text="{Binding ProdutoEnumeravel}" HorizontalAlignment="Left" Margin="33,63,0,0" VerticalAlignment="Top" Width="142" Height="22" DropDownClosed="ComboAdicionarProdutos_DropDownClosed"  />
+        <Button Name="Btn_Adicionar" Content="Adicionar" Command="{Binding Adicionar}" HorizontalAlignment="Left" Margin="77,172,0,0" VerticalAlignment="Top" />
+        <Button Name="Btn_Remover" Content="Remover" Command="{Binding Remove}" HorizontalAlignment="Left" Margin="79,217,0,0" VerticalAlignment="Top" Click="Button_Click_Remover"/>
+        <Button Name="Btn_Editar" Content="Editar" Command="{Binding Alterar}" HorizontalAlignment="Left" Margin="87,263,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
